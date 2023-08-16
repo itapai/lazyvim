@@ -8,5 +8,10 @@ vim.api.nvim_del_keymap("n", "<leader>fT")
 vim.api.nvim_del_keymap("n", "<c-/>")
 vim.api.nvim_del_keymap("n", "<c-_>")
 
+-- disable default terminal mappings
+vim.api.nvim_del_keymap("t", "<C-h>")
+vim.api.nvim_del_keymap("t", "<C-j>")
+vim.api.nvim_del_keymap("t", "<C-k>")
+vim.api.nvim_del_keymap("t", "<C-l>")
 vim.api.nvim_del_keymap("t", "<C-/>")
 vim.api.nvim_del_keymap("t", "<c-_>")
