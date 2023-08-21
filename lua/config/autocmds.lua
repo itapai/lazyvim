@@ -1,7 +1,22 @@
 -- Autocmds are automatically loaded on the VeryLazy event
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  pattern = { "*" },
-  command = "normal zx zR",
+-- doesn't work - cuts filess in neo-tree
+--
+-- vim.api.nvim_create_autocmd({ "BufEnter" }, {
+--   pattern = { "*" },
+--   command = "normal zx zR",
+-- })
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufNew", "BufWinEnter" }, {
+  group = vim.api.nvim_create_augroup("ts_fold_workaround", { clear = true }),
+  command = "set foldexpr=nvim_treesitter#foldexpr()",
+})
+
+-- https://github.com/LazyVim/LazyVim/issues/80
+vim.api.nvim_create_autocmd("FileType", {
+  command = "set formatoptions-=cro",
+  -- callback = function()
+  --   vim.opt.formatoptions:remove({ "c", "r", "o" })
+  -- end,
 })
