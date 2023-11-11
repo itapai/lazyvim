@@ -15,3 +15,7 @@ vim.api.nvim_del_keymap("t", "<C-k>")
 vim.api.nvim_del_keymap("t", "<C-l>")
 vim.api.nvim_del_keymap("t", "<C-/>")
 vim.api.nvim_del_keymap("t", "<c-_>")
+
+vim.keymap.set("n", "<leader>bo", "<cmd>%bd | e# | bd# <cr>", {
+  desc = "Close all buffers but the current one",
+}) --
